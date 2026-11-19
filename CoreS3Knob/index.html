@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CoreS3 Knob Turns</title>
+<style>
+  :root { color-scheme: dark; font: 16px system-ui; background: #101714; color: #f1f6f2; }
+  main { max-width: 680px; margin: 5vh auto; padding: 24px; }
+  h1 { font-size: 1.5rem; margin: 0 0 16px; }
+  button { font: inherit; padding: 10px 16px; border-radius: 8px; border: 0; cursor: pointer; }
+  output { display: block; font-size: clamp(2rem, 10vw, 5rem); font-weight: 750; margin: 20px 0; }
+  canvas { display: block; width: min(100%, 640px); aspect-ratio: 4 / 3; border-radius: 12px; background: #202a24; }
+  canvas { transform: scaleX(-1); }
+  #grip { padding: 12px 14px; border-radius: 8px; background: #202a24; }
+  #grip[data-held="true"] { background: #254631; color: #b7ffcb; font-weight: 700; }
+  progress { display: block; width: 100%; margin: 0 0 16px; accent-color: #a1fac1; }
+</style>
+<main>
+  <h1>CoreS3 Knob Turns</h1>
+  <button type="button">Connect CoreS3</button>
+  <p id="status">Plug the CoreS3 into your Mac with USB.</p>
+  <p id="grip" role="status">Connect the CoreS3 to start.</p>
+  <output aria-label="Knob turns" aria-live="polite">0</output>
+  <progress max="45" value="0" aria-label="Progress toward the next knob turn"></progress>
+  <canvas width="320" height="240" aria-label="CoreS3 camera preview"></canvas>
+</main>
+<script type="module" src="./detector.mjs"></script>
+</html>
